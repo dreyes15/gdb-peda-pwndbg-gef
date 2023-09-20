@@ -1,6 +1,6 @@
 #!/bin/sh
 
-installer_path=$PWD
+installer_path=/opt/
 
 echo "[+] Checking for required dependencies..."
 if command -v git >/dev/null 2>&1 ; then
@@ -22,13 +22,13 @@ if [ -d ~/peda ] || [ -h ~/.peda ]; then
 
     if [ $skip_peda = 'n' ]; then
         rm -rf ~/peda
-        git clone https://github.com/longld/peda.git ~/peda
+        git clone https://github.com/longld/peda.git /opt/peda
     else
         echo "PEDA skipped"
     fi
 else
     echo "[+] Downloading PEDA..."
-    git clone https://github.com/longld/peda.git ~/peda
+    git clone https://github.com/longld/peda.git /opt/peda
 fi
 
 # download peda arm
@@ -44,7 +44,7 @@ if [ -d ~/peda-arm ] || [ -h ~/.peda ]; then
     fi
 else	    
     echo "[+] Downloading PEDA ARM..."
-    git clone https://github.com/alset0326/peda-arm.git ~/peda-arm
+    git clone https://github.com/alset0326/peda-arm.git /opt/peda-arm
 fi
 
 # download pwndbg
@@ -54,24 +54,24 @@ if [ -d ~/pwndbg ] || [ -h ~/.pwndbg ]; then
 
     if [ $skip_pwndbg = 'n' ]; then
         rm -rf ~/pwndbg
-        git clone https://github.com/pwndbg/pwndbg.git ~/pwndbg
+        git clone https://github.com/pwndbg/pwndbg.git /opt/pwndbg
 
-        cd ~/pwndbg
+        cd /opt/pwndbg
         ./setup.sh
     else
         echo "Pwndbg skipped"
     fi
 else
     echo "[+] Downloading Pwndbg..."
-    git clone https://github.com/pwndbg/pwndbg.git ~/pwndbg
+    git clone https://github.com/pwndbg/pwndbg.git /opt/pwndbg
 
-    cd ~/pwndbg
+    cd /opt/pwndbg
     ./setup.sh
 fi
 
 # download gef
 echo "[+] Downloading GEF..."
-git clone https://github.com/hugsy/gef.git ~/gef
+git clone https://github.com/hugsy/gef.git /opt/gef
 
 cd $installer_path
 
@@ -80,11 +80,11 @@ cp gdbinit ~/.gdbinit
 
 {
   echo "[+] Creating files..."
-    sudo cp gdb-peda /usr/bin/gdb-peda &&\
-    sudo cp gdb-peda-arm /usr/bin/gdb-peda-arm &&\
-    sudo cp gdb-peda-intel /usr/bin/gdb-peda-intel &&\
-    sudo cp gdb-pwndbg /usr/bin/gdb-pwndbg &&\
-    sudo cp gdb-gef /usr/bin/gdb-gef
+    sudo cp /opt/gdb-peda /usr/bin/gdb-peda &&\
+    sudo cp /opt/gdb-peda-arm /usr/bin/gdb-peda-arm &&\
+    sudo cp /opt/gdb-peda-intel /usr/bin/gdb-peda-intel &&\
+    sudo cp /opt/gdb-pwndbg /usr/bin/gdb-pwndbg &&\
+    sudo cp /opt/gdb-gef /usr/bin/gdb-gef
 } || {
   echo "[-] Permission denied"
     exit
