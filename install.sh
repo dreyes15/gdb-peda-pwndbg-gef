@@ -1,6 +1,6 @@
 #!/bin/sh
 
-installer_path=/opt/
+installer_path=/opt/gdb-peda-pwndbg-gef/
 
 echo "[+] Checking for required dependencies..."
 if command -v git >/dev/null 2>&1 ; then
@@ -80,11 +80,11 @@ cp gdbinit ~/.gdbinit
 
 {
   echo "[+] Creating files..."
-    sudo cp /opt/gdb-peda /usr/bin/gdb-peda &&\
-    sudo cp /opt/gdb-peda-arm /usr/bin/gdb-peda-arm &&\
-    sudo cp /opt/gdb-peda-intel /usr/bin/gdb-peda-intel &&\
-    sudo cp /opt/gdb-pwndbg /usr/bin/gdb-pwndbg &&\
-    sudo cp /opt/gdb-gef /usr/bin/gdb-gef
+    cp gdb-peda /usr/bin/gdb-peda &&\
+    cp gdb-peda-arm /usr/bin/gdb-peda-arm &&\
+    cp gdb-peda-intel /usr/bin/gdb-peda-intel &&\
+    cp gdb-pwndbg /usr/bin/gdb-pwndbg &&\
+    cp gdb-gef /usr/bin/gdb-gef
 } || {
   echo "[-] Permission denied"
     exit
